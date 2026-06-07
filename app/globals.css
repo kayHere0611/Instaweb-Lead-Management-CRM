@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +27,44 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.glass-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Crucial: Pushes items across the pill width */
+    padding: 10px 25px;
+    position: fixed;
+    width: 90%; 
+    max-width: 1100px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* The "Glass" look */
+    background: rgba(255, 255, 255, 0.85); /* Slightly lower opacity for true frosty glass texture */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+}
+
+/* Align logo and text */
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box img {
+    height: 42px; /* Balanced sizing to match standard navigation proportions */
+    width: 42px;
+    border-radius: 50%; /* Circle cut looks fantastic inside pill designs */
+    object-fit: cover;
+}
+
+/* Push your core body container down so it doesn't clip behind your floating navigation */
+main, .dashboard-container {
+    padding-top: 120px !important;
 }
